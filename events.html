@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — NSU Debate Club</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css?v=20250922" />
+</head>
+
+<body class="bg-pattern text-[var(--ink)]">
+  <!-- Header (same skeleton as other pages) -->
+  <header data-include="components/header.html"></header>
+
+  <!-- Page heading -->
+  <section class="bg-white/70">
+    <div class="mx-auto max-w-7xl px-8 sm:px-6 py-10">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Events</h1>
+      <p class="mt-2 text-[var(--ink)]/70">Tournaments, workshops, and community engagements by NSUDC.</p>
+    </div>
+  </section>
+
+  <!-- Events grid -->
+  <main class="mx-auto max-w-7xl px-8 sm:px-6 py-10">
+    <div id="events-root" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+
+    <!-- Empty / error states -->
+    <div id="events-empty" class="hidden card bg-white p-8 text-center mt-6">
+      <p class="text-[var(--ink)]/70">No events found right now. Please check back soon.</p>
+    </div>
+    <div id="events-error" class="hidden card bg-white p-8 text-center mt-6">
+      <p class="text-red-600 font-semibold">Unable to load events. Please refresh the page.</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div data-include="components/footer.html"></div>
+
+  <script>
+    // Mobile menu
+    document.getElementById('menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+  <script src="js/events.js" defer></script>
+  <script src="include.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon — NSU Debate Club</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css?v=20250922" />
+  <meta name="robots" content="noindex">
+</head>
+<body class="bg-pattern text-[var(--ink)]">
+  <!-- Reusable header -->
+  <header data-include="components/header.html"></header>
+
+  <!-- Hero -->
+  <main class="min-h-[70vh]">
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 py-16">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+            Something great is on the way.
+          </h1>
+          <p class="mt-3 text-lg text-[var(--ink)]/70">
+            We’re putting the final touches on this page. Check back soon—or drop your email and we’ll ping you.
+          </p>
+
+          <!-- Countdown -->
+          <div class="mt-8 grid grid-cols-4 gap-3 max-w-md" role="timer" aria-live="polite">
+            <div class="card bg-white p-4 text-center">
+              <div id="dd" class="text-3xl font-extrabold tabular-nums">10</div>
+              <div class="text-xs text-[var(--ink)]/60">Days</div>
+            </div>
+            <div class="card bg-white p-4 text-center">
+              <div id="hh" class="text-3xl font-extrabold tabular-nums">12</div>
+              <div class="text-xs text-[var(--ink)]/60">Hours</div>
+            </div>
+            <div class="card bg-white p-4 text-center">
+              <div id="mm" class="text-3xl font-extrabold tabular-nums">42</div>
+              <div class="text-xs text-[var(--ink)]/60">Minutes</div>
+            </div>
+            <div class="card bg-white p-4 text-center">
+              <div id="ss" class="text-3xl font-extrabold tabular-nums">40</div>
+              <div class="text-xs text-[var(--ink)]/60">Seconds</div>
+            </div>
+          </div>
+
+          <!-- Notify form -->
+          <form id="notify-form" class="mt-8 flex max-w-md gap-3" novalidate>
+            <input
+              id="notify-email"
+              type="email"
+              required
+              placeholder="your@email.com"
+              class="w-full rounded-xl border border-black/10 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-[var(--primary)]/20"
+              aria-label="Email address"
+            />
+            <button class="btn-primary w-40 px-5" type="submit">Notify me</button>
+          </form>
+          <p id="notify-msg" class="mt-2 text-sm text-[var(--ink)]/70"></p>
+        </div>
+
+        <!-- Visual card -->
+        <div class="card bg-white p-6">
+          <img src="images/Facebook Event Cover.jpg" alt="NSUDC Coming Soon" class="w-full h-72 object-cover rounded-lg">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="include.js" defer></script>
+  <script src="js/coming-soon.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fall 2025 — NSU Debate Club</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css?v=20250922" />
+</head>
+<body class="bg-pattern text-[var(--ink)]">
+  <!-- Reusable header -->
+  <header data-include="components/header.html"></header>
+
+  <!-- Hero -->
+  <section class="bg-white/70 border-b border-black/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-12">
+      <div class="grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Fall 2025 Recruitment</h1>
+          <p class="mt-3 text-lg text-[var(--ink)]/70">
+            Join NSUDC’s newest cohort. Train with seniors, compete nationally, and grow your voice.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="chip">Novice</span>
+            <span class="chip">Open</span>
+            <span class="chip">Workshops</span>
+            <span class="chip">Practice Rounds</span>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a id="cta-register" href="register.html#tryouts" class="btn-primary inline-flex items-center gap-2">
+              Register Now
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a id="cta-prospectus" href="#" class="inline-flex items-center gap-2 rounded-full border border-black/10 px-4 py-2 font-semibold">
+              Download Prospectus (PDF)
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card bg-white p-6">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <p class="text-[var(--ink)]/60 text-sm">Key Dates</p>
+              <p id="key-dates" class="font-extrabold">Oct–Nov 2025</p>
+            </div>
+            <div>
+              <p class="text-[var(--ink)]/60 text-sm">Format</p>
+              <p class="font-extrabold">BP (Novice & Open)</p>
+            </div>
+            <div>
+              <p class="text-[var(--ink)]/60 text-sm">Venue</p>
+              <p id="venue" class="font-extrabold">NSU Campus</p>
+            </div>
+            <div>
+              <p class="text-[var(--ink)]/60 text-sm">Requirements</p>
+              <p class="font-extrabold">NSU Student ID</p>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-[var(--ink)]/70">* Bring your valid NSU ID on trial days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perks -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-10">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="card bg-white p-6 hover-pop">
+        <div class="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--primary)]/10 text-[var(--primary)]">🎤</div>
+        <h3 class="text-lg font-extrabold">Expert Training</h3>
+        <p class="mt-1 text-[var(--ink)]/70">Speaker drills, rebuttal clinics, motion analysis, and feedback.</p>
+      </div>
+      <div class="card bg-white p-6 hover-pop">
+        <div class="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--primary)]/10 text-[var(--primary)]">🏆</div>
+        <h3 class="text-lg font-extrabold">Tournament Pathway</h3>
+        <p class="mt-1 text-[var(--ink)]/70">Compete in intra, inter, and national circuit tournaments.</p>
+      </div>
+      <div class="card bg-white p-6 hover-pop">
+        <div class="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--primary)]/10 text-[var(--primary)]">🤝</div>
+        <h3 class="text-lg font-extrabold">Community & Mentorship</h3>
+        <p class="mt-1 text-[var(--ink)]/70">Learn from seniors and alumni with strong circuit experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule (from fall-25.json) -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-4">
+    <div class="flex items-baseline justify-between">
+      <h2 class="text-xl font-extrabold">Schedule</h2>
+      <a href="events.html" class="text-sm font-semibold text-[var(--ink)]/60 hover:text-[var(--ink)]">See all events</a>
+    </div>
+    <div id="schedule-grid" class="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+    <div id="schedule-empty" class="hidden card bg-white p-6 mt-4 text-center text-[var(--ink)]/70">Schedule coming soon.</div>
+  </section>
+
+  <!-- FAQs (from fall-25.json) -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 py-10">
+    <div class="card bg-white p-6">
+      <h2 class="text-xl font-extrabold mb-4">Frequently Asked Questions</h2>
+      <div id="faq-wrap" class="divide-y divide-black/5"></div>
+    </div>
+    <div class="mt-6 text-center">
+      <a href="register.html#tryouts" class="btn-primary">Apply for Fall 2025</a>
+    </div>
+  </section>
+
+  <!-- Reusable footer -->
+  <div data-include="components/footer.html"></div>
+
+  <script src="include.js" defer></script>
+  <script src="js/fall-25.js" defer></script>
+</body>
+</html>

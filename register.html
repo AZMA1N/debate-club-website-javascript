@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register — NSU Debate Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css?v=20250922" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #071530;
+        }
+
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            background: #cdd5e1;
+        }
+
+        .step-active .step-dot {
+            background: var(--primary);
+        }
+
+        .step-title {
+            color: #475569;
+            font-weight: 700;
+        }
+
+        .step-active .step-title {
+            color: #0f172a;
+        }
+
+        .field {
+            border: 1px solid rgba(0, 0, 0, .08);
+        }
+
+        .field:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(7, 21, 48, .18);
+            border-color: rgba(7, 21, 48, .35);
+        }
+
+        .error {
+            border-color: crimson !important;
+        }
+
+        .err-msg {
+            color: crimson;
+            font-size: .8rem;
+            display: none;
+        }
+
+        .err-msg.show {
+            display: block;
+        }
+
+        .review-row {
+            display: flex;
+            justify-content: space-between;
+            gap: .75rem;
+            padding: .5rem 0;
+            border-bottom: 1px dashed rgba(0, 0, 0, .08);
+        }
+
+        .review-row b {
+            color: #0f172a;
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(0, 0, 0, .1);
+            border-radius: 9999px;
+            padding: .55rem 1rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body class="bg-pattern text-[var(--ink)]">
+    <!-- Reusable header -->
+    <header data-include="components/header.html"></header>
+
+    <!-- Page heading -->
+    <section class="bg-white/70 border-b border-black/5">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 py-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Candidate Registration</h1>
+            <p class="mt-2 text-[var(--ink)]/70">Fall intake for NSU Debate Club — autosaves as you type.</p>
+        </div>
+    </section>
+
+    <!-- Wizard layout -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 py-10 grid gap-8 lg:grid-cols-[280px,1fr]">
+        <!-- Left stepper -->
+        <aside class="card bg-white p-6 h-max sticky top-6">
+            <ol id="stepper" class="space-y-5">
+                <li class="flex items-center gap-3 step step-active" data-step="1">
+                    <span class="step-dot"></span>
+                    <span class="step-title">Personal Info</span>
+                </li>
+                <li class="flex items-center gap-3 step" data-step="2">
+                    <span class="step-dot"></span>
+                    <span class="step-title">Skills & Motivation</span>
+                </li>
+                <li class="flex items-center gap-3 step" data-step="3">
+                    <span class="step-dot"></span>
+                    <span class="step-title">Perspective Qs</span>
+                </li>
+                <li class="flex items-center gap-3 step" data-step="4">
+                    <span class="step-dot"></span>
+                    <span class="step-title">Review & Submit</span>
+                </li>
+            </ol>
+
+            <div class="mt-6 text-sm text-[var(--ink)]/60">
+                <p><b>Tip:</b> Your progress autosaves on this device.</p>
+                <button id="clear-draft" class="mt-3 btn-secondary">Clear Draft</button>
+            </div>
+        </aside>
+
+        <!-- Right content -->
+        <section class="space-y-6">
+            <!-- form error summary -->
+            <div id="error-summary" class="hidden card bg-white p-4 text-sm">
+                <p class="font-bold text-red-600">Please fix the following:</p>
+                <ul id="error-list" class="list-disc list-inside mt-2 text-red-600"></ul>
+            </div>
+
+            <form id="recruitmentForm" class="card bg-white p-6 md:p-8" novalidate>
+                <!-- STEP 1 -->
+                <div id="step-1" class="step-pane">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="name">Full Name <span
+                                    class="text-red-600">*</span></label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="name" name="entry.1139913686" required
+                                placeholder="e.g., Samin Ahmed">
+                            <div class="err-msg" data-err-for="name">Please enter your name.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="email">NSU Email Address <span
+                                    class="text-red-600">*</span></label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="email" name="entry.544443379"
+                                type="email" required placeholder="name@northsouth.edu">
+                            <div class="err-msg" data-err-for="email">Use your NSU email (…@northsouth.edu).</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="nsu_id">NSU ID <span
+                                    class="text-red-600">*</span></label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="nsu_id" name="entry.1165370274"
+                                required pattern="\\d{10}" placeholder="10 digits">
+                            <div class="err-msg" data-err-for="nsu_id">Enter a 10-digit NSU ID.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="phone">Phone Number <span
+                                    class="text-red-600">*</span></label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="phone" name="entry.1111890077" required
+                                pattern="01[3-9]\\d{8}" placeholder="019XXXXXXXXX">
+                            <div class="err-msg" data-err-for="phone">Valid BD mobile (e.g., 019XXXXXXXXX).</div>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold mb-1" for="department">Department <span
+                                    class="text-red-600">*</span></label>
+                            <select class="field w-full rounded-lg px-4 py-2" id="department" name="entry.1885110944"
+                                required>
+                                <option value="" disabled selected>Select your department</option>
+                                <option value="School of Business and Economics (BBA, ECO, etc.)">School of Business and
+                                    Economics (BBA, ECO, etc.)</option>
+                                <option value="Dept. of Electrical and Computer Engineering (CSE, EEE)">Dept. of
+                                    Electrical and Computer Engineering (CSE, EEE)</option>
+                                <option value="Dept. of Architecture">Dept. of Architecture</option>
+                                <option value="Dept. of Civil and Environmental Engineering">Dept. of Civil and
+                                    Environmental Engineering</option>
+                                <option value="Dept. of Law">Dept. of Law</option>
+                                <option value="Dept. of English and Modern Languages">Dept. of English and Modern
+                                    Languages</option>
+                                <option value="Dept. of Pharmaceutical Sciences">Dept. of Pharmaceutical Sciences
+                                </option>
+                                <option value="Dept. of Biochemistry and Microbiology">Dept. of Biochemistry and
+                                    Microbiology</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="err-msg" data-err-for="department">Please choose a department.</div>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold mb-1" for="facebook">Facebook profile
+                                (optional)</label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="facebook" name="entry.822417478"
+                                type="url" placeholder="https://www.facebook.com/username">
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end">
+                        <button class="btn-primary px-6 py-2" type="button" data-next>Next</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="step-2" class="step-pane hidden">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="prior_experience">Prior extracurricular
+                                / club experience</label>
+                            <textarea class="field w-full rounded-lg px-4 py-2" id="prior_experience"
+                                name="entry.2110509238" rows="3" placeholder="Roles, committees, or N/A"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="skills">Notable Skills <span
+                                    class="text-red-600">*</span></label>
+                            <textarea class="field w-full rounded-lg px-4 py-2" id="skills" name="entry.808969974"
+                                rows="2" required
+                                placeholder="e.g., graphics design, IT, crafting, etc. (or N/A)"></textarea>
+                            <div class="err-msg" data-err-for="skills">Please list skills or write N/A.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="questionnaire">Why do you want to join
+                                NSUDC? <span class="text-red-600">*</span></label>
+                            <textarea class="field w-full rounded-lg px-4 py-2" id="questionnaire"
+                                name="entry.192450253" rows="4" required
+                                placeholder="Motivation, interests, relevant experience"></textarea>
+                            <div class="err-msg" data-err-for="questionnaire">This field is required.</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:justify-between">
+                        <button class="btn-secondary" type="button" data-prev>Back</button>
+                        <button class="btn-primary px-6 py-2" type="button" data-next>Next</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div id="step-3" class="step-pane hidden">
+                    <p class="text-sm text-[var(--ink)]/70 mb-4">Short answers are fine. Aim for clarity.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q1">If your life was a safe reality
+                                show, would you open the door to the real world? Why? <span
+                                    class="text-red-600">*</span></label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q1" name="entry.126370611" required>
+                            <div class="err-msg" data-err-for="q1">Required.</div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q2">
+                                Which moment of your life would get the highest TRP if broadcast? <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q2" name="entry.1785315955" required>
+                            <div class="err-msg" data-err-for="q2">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q3">
+                                If we had hidden cameras right now, what would the audience say about you? <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q3" name="entry.21658698" required>
+                            <div class="err-msg" data-err-for="q3">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q4">
+                                In one sentence: what does debate mean to you? Strength &amp; weakness. <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q4" name="entry.415316011" required>
+                            <div class="err-msg" data-err-for="q4">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q5">
+                                If you had to argue that lying is better than telling the truth, what’s one point you’d
+                                give? <span class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q5" name="entry.805002866" required>
+                            <div class="err-msg" data-err-for="q5">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q6">
+                                Is foreign aid more about generosity or hidden self-interest? Explain. <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q6" name="entry.1435460556" required>
+                            <div class="err-msg" data-err-for="q6">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q7">
+                                If freedom means pain, and comfort means control, which would you choose and why? <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q7" name="entry.109327416" required>
+                            <div class="err-msg" data-err-for="q7">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q8">
+                                If you had to rename <em>The Truman Show</em> based on your personality, what would the
+                                title be? <span class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q8" name="entry.597005686" required>
+                            <div class="err-msg" data-err-for="q8">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q9">
+                                Is it possible to be truly free in a society full of rules and norms? <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q9" name="entry.2028989799" required>
+                            <div class="err-msg" data-err-for="q9">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q10">
+                                If you could permanently erase one single experience from your past, would you? Why or
+                                why not? <span class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q10" name="entry.578004171" required>
+                            <div class="err-msg" data-err-for="q10">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q11">
+                                Do you think the UN still matters in today’s world? Why or why not? <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q11" name="entry.394040692" required>
+                            <div class="err-msg" data-err-for="q11">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q12">
+                                Which matters more for a nation’s progress: strong leaders or strong institutions? <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q12" name="entry.622432171" required>
+                            <div class="err-msg" data-err-for="q12">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q13">
+                                Imagine the debate club is your audience—convince us not to change the channel. <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q13" name="entry.1453549023" required>
+                            <div class="err-msg" data-err-for="q13">Required.</div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-1" for="q14">
+                                Is democracy always the best form of government? Be precise. <span
+                                    class="text-red-600">*</span>
+                            </label>
+                            <input class="field w-full rounded-lg px-4 py-2" id="q14" name="entry.800159520" required>
+                            <div class="err-msg" data-err-for="q14">Required.</div>
+                        </div>
+
+
+                        <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:justify-between">
+                            <button class="btn-secondary" type="button" data-prev>Back</button>
+                            <button class="btn-primary px-6 py-2" type="button" data-next>Review</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Review -->
+                    <div id="step-4" class="step-pane hidden">
+                        <h3 class="text-lg font-extrabold">Review your answers</h3>
+                        <p class="text-sm text-[var(--ink)]/70 mb-4">Make sure everything looks right before submitting.
+                        </p>
+
+                        <div id="review" class="grid gap-4 md:grid-cols-2"></div>
+
+                        <label class="mt-6 flex items-center gap-2">
+                            <input type="checkbox" id="consent" class="h-4 w-4">
+                            <span class="text-sm text-[var(--ink)]/80">I confirm the information is accurate and agree
+                                to be contacted by NSUDC.</span>
+                        </label>
+
+                        <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:justify-between">
+                            <button class="btn-secondary" type="button" data-prev>Edit</button>
+                            <button id="submit-btn" class="btn-primary px-6 py-2" type="submit" disabled>Submit
+                                Application</button>
+                        </div>
+                    </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Reusable footer -->
+    <div data-include="components/footer.html"></div>
+
+    <script src="include.js" defer></script>
+      <script src="js/register.js?v=20250922"></script>
+</body>
+
+</html>

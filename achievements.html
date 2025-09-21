@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - NSUDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css?v=20250922" />
+    <script src="js/animations.js?v=20250922"></script>
+</head>
+
+<body class="bg-pattern text-[var(--ink)]">
+    <header data-include="components/header.html"></header>
+
+    <!-- Page heading -->
+    <section class="glass-nav py-12">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 text-center">
+            <h1 class="heading-1 mb-4 animate-fade-in-up">
+                Achievements & Recognition
+            </h1>
+            <p class="body-large text-[var(--ink-light)] animate-fade-in-up">
+                Celebrating excellence in debate and public speaking
+            </p>
+        </div>
+    </section>
+
+    <!-- Countdown to next tournament -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 py-12">
+        <div class="text-center mb-8 animate-scale-in">
+            <h2 class="heading-2 gradient-text mb-4">Next Major Tournament</h2>
+            <p class="body text-[var(--ink-light)]">NSU Inter-University Debate Championship 2025</p>
+        </div>
+        
+        <div class="countdown-container grid grid-cols-4 gap-4 max-w-md mx-auto">
+            <div class="countdown-card card-glass p-4 text-center hover-pop">
+                <div id="days" class="countdown-number heading-3 gradient-text tabular-nums">30</div>
+                <div class="countdown-label caption">Days</div>
+            </div>
+            <div class="countdown-card card-glass p-4 text-center hover-pop">
+                <div id="hours" class="countdown-number heading-3 gradient-text tabular-nums">12</div>
+                <div class="countdown-label caption">Hours</div>
+            </div>
+            <div class="countdown-card card-glass p-4 text-center hover-pop">
+                <div id="minutes" class="countdown-number heading-3 gradient-text tabular-nums">45</div>
+                <div class="countdown-label caption">Minutes</div>
+            </div>
+            <div class="countdown-card card-glass p-4 text-center hover-pop">
+                <div id="seconds" class="countdown-number heading-3 gradient-text tabular-nums">30</div>
+                <div class="countdown-label caption">Seconds</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements grid -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 py-12 space-y-12">
+        <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="card bg-white p-6 hover-pop">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100 text-yellow-700">
+                    🏆
+                </div>
+                <h3 class="text-lg font-extrabold">World Championships</h3>
+                <p class="mt-1 text-[var(--ink)]/70">Multiple breaking teams at WUDC with outstanding performances</p>
+                <div class="mt-3 text-sm font-semibold text-yellow-700">15+ International Breaks</div>
+            </div>
+
+            <div class="card bg-white p-6 hover-pop">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700">
+                    🥇
+                </div>
+                <h3 class="text-lg font-extrabold">National Champions</h3>
+                <p class="mt-1 text-[var(--ink)]/70">Defending champions in multiple local tournaments</p>
+                <div class="mt-3 text-sm font-semibold text-blue-700">50+ National Titles</div>
+            </div>
+
+            <div class="card bg-white p-6 hover-pop">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700">
+                    🎯
+                </div>
+                <h3 class="text-lg font-extrabold">Best Speakers</h3>
+                <p class="mt-1 text-[var(--ink)]/70">Individual excellence recognized across tournaments</p>
+                <div class="mt-3 text-sm font-semibold text-green-700">100+ Speaker Awards</div>
+            </div>
+
+            <div class="card bg-white p-6 hover-pop">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
+                    🌟
+                </div>
+                <h3 class="text-lg font-extrabold">Alumni Network</h3>
+                <p class="mt-1 text-[var(--ink)]/70">Strong network of professionals and leaders</p>
+                <div class="mt-3 text-sm font-semibold text-purple-700">500+ Alumni</div>
+            </div>
+
+            <div class="card bg-white p-6 hover-pop">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-100 text-red-700">
+                    🏅
+                </div>
+                <h3 class="text-lg font-extrabold">Regional Dominance</h3>
+                <p class="mt-1 text-[var(--ink)]/70">Top-ranking team among Sub-continental teams</p>
+                <div class="mt-3 text-sm font-semibold text-red-700">#1 in Region</div>
+            </div>
+
+            <div class="card bg-white p-6 hover-pop">
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-indigo-700">
+                    📚
+                </div>
+                <h3 class="text-lg font-extrabold">Academic Excellence</h3>
+                <p class="mt-1 text-[var(--ink)]/70">Research and training programs recognized nationally</p>
+                <div class="mt-3 text-sm font-semibold text-indigo-700">Excellence Awards</div>
+            </div>
+        </section>
+    </main>
+
+    <footer data-include="components/footer.html"></footer>
+
+    <script src="include.js" defer></script>
+    <script>
+        // Animated countdown clock
+        function updateCountdown() {
+            const targetDate = new Date('2025-12-15T10:00:00+06:00').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Smooth number transitions
+            animateNumber('days', days);
+            animateNumber('hours', hours);
+            animateNumber('minutes', minutes);
+            animateNumber('seconds', seconds);
+        }
+
+        function animateNumber(elementId, newValue) {
+            const element = document.getElementById(elementId);
+            const formattedValue = String(newValue).padStart(2, '0');
+            
+            if (element.textContent !== formattedValue) {
+                element.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    element.textContent = formattedValue;
+                    element.style.transform = 'scale(1)';
+                }, 150);
+            }
+        }
+
+        // Update every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Add floating animation to countdown cards
+        document.querySelectorAll('.countdown-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+            card.style.animation = 'float 3s ease-in-out infinite';
+        });
+
+        // Add float keyframes dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotateY(0deg); }
+                50% { transform: translateY(-10px) rotateY(5deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

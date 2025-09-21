@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#071530" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="NSUDC" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="North South University Debate Club - Join the legacy of excellence in debate and public speaking. Register for events, view achievements, and become part of our community." />
+    <meta name="keywords" content="NSU, debate club, public speaking, university, Bangladesh, debate tournament, argumentation" />
+    <meta name="author" content="NSU Debate Club" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="NSU Debate Club — Official" />
+    <meta property="og:description" content="Join the legacy of excellence in debate and public speaking at North South University." />
+    <meta property="og:image" content="nsudc-logo.png" />
+    <meta property="og:url" content="https://nsudc.org" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NSU Debate Club — Official" />
+    <meta name="twitter:description" content="Join the legacy of excellence in debate and public speaking." />
+    <meta name="twitter:image" content="nsudc-logo.png" />
+    
+    <title>NSU Debate Club — Official</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="nsudc-logo.png" />
+    <link rel="apple-touch-icon" href="nsudc-logo.png" />
+    
+    <!-- Critical Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css?v=20250922" data-critical />
+    
+    <!-- Non-critical Resources -->
+    <script src="js/performance.js?v=20250922" defer></script>
+    <script src="js/animations.js?v=20250922" defer></script>
+    <script src="js/interactive.js?v=20250922" defer></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-pattern text-[var(--ink)]">
+    <header data-include="components/header.html"></header>
+
+    <div
+      class="mx-auto max-w-7xl px-4 sm:px-6 py-8 md:py-12 grid grid-cols-1 lg:grid-cols-[72px,1fr,360px] gap-6"
+    >
+      <aside class="hidden lg:flex flex-col items-center gap-3 pt-2">
+        <a
+          class="sidebar-btn active"
+          href="#"
+          title="Home"
+          aria-label="Home"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"
+            />
+          </svg>
+        </a>
+        <a class="sidebar-btn" href="about.html" title="About">
+          <svg
+            viewBox="0 0 24 24"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 12v6m0-10h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+          </svg>
+        </a>
+        <a class="sidebar-btn" href="register.html" title="Register">
+          <svg
+            viewBox="0 0 24 24"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 6v12m6-6H6" />
+          </svg>
+        </a>
+        <a
+          class="sidebar-btn"
+          href="mailto:debate.club@northsouth.edu"
+          title="Contact"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M4 4h16v16H4z" />
+            <path d="m22 6-10 7L2 6" />
+          </svg>
+        </a>
+      </aside>
+
+      <main class="space-y-8">
+        <section id="hero" class="card-elevated glass-card p-7 md:p-10 animate-fade-in-up"></section>
+
+        <section class="space-y-4 hidden">
+          <div class="flex items-center justify-between">
+            <h2 class="heading-3 gradient-text">Most popular</h2>
+            <a
+              href="about.html#programs"
+              class="body-small text-[var(--ink)]/60 hover:text-[var(--ink)] transition-colors"
+              >See all</a
+            >
+          </div>
+          <div
+            id="popular-grid"
+            class="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+          ></div>
+        </section>
+
+        <section
+          id="why"
+          class="grid gap-6 md:grid-cols-2 md:[grid-column:1/-1] animate-fade-in-left"
+        ></section>
+
+        <section id="tiles" class="grid gap-5 md:grid-cols-3 animate-slide-in-right"></section>
+      </main>
+
+      <aside class="space-y-6">
+        <section class="card-glass p-6 animate-scale-in">
+          <h4 class="heading-4 mb-3 gradient-text">Updates</h4>
+          <div class="ticker-viewport">
+            <ul id="updates-list" class="ticker-list"></ul>
+          </div>
+        </section>
+
+        <section class="card-elevated p-6 hover-pop">
+          <h4 class="heading-4 gradient-text-accent">Learning Modules</h4>
+          <ul id="modules-list" class="mt-3 space-y-3"></ul>
+        </section>
+      </aside>
+    </div>
+
+    <div data-include="components/footer.html"></div>
+
+    <div
+      id="success-modal"
+      class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4"
+    >
+      <div
+        id="success-box"
+        class="card bg-white w-full max-w-sm p-6 opacity-0 translate-y-3 transition"
+      >
+        <div
+          class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-green-600/10 text-green-700"
+        >
+          ✓
+        </div>
+        <h4 class="mt-4 text-xl font-extrabold">Registration successful!</h4>
+        <p class="mt-1 text-[var(--ink)]/70">
+          Thank you for your application. Please proceed to the Interaction
+          Booth for the next step.
+        </p>
+        <button id="close-modal-btn" class="mt-4 btn-primary px-4 py-2">
+          Close
+        </button>
+      </div>
+    </div>
+    <script src="js/app.js" defer></script>
+    <script src="include.js" defer></script>
+  </body>
+</html>
