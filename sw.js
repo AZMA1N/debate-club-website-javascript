@@ -15,11 +15,12 @@ const STATIC_FILES = [
   '/js/app.js',
   '/js/animations.js',
   '/js/interactive.js',
-  '/js/include.js',
+  '/include.js',
   '/components/header.html',
   '/components/footer.html',
   '/nsudc-logo.png',
   '/nsu-logo-small.png',
+  '/offline.html',
   'https://cdn.tailwindcss.com/3.3.0',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap'
 ];
@@ -101,9 +102,9 @@ self.addEventListener('fetch', event => {
             console.log('Service Worker: Fetch failed', err);
             
             // Return offline page for navigation requests
-            if (event.request.destination === 'document') {
-              return caches.match('/offline.html');
-            }
+              if (event.request.destination === 'document') {
+                return caches.match('/offline.html');
+              }
           });
       })
   );

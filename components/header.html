@@ -1,12 +1,78 @@
-<nav class="site-header mx-auto max-w-7xl px-4 sm:px-6 py-4 flex items-center justify-between">
-  <a href="index.html" class="flex items-center gap-3">
-    <img src="nsu-logo-small.png" alt="NSU" class="h-10 w-auto" />
-    <span class="font-extrabold">NSU Debate Club</span>
-  </a>
-  <div class="hidden md:flex items-center gap-4">
-    <a href="about.html" class="hover:underline">About</a>
-    <a href="achievements.html" class="hover:underline">Achievements</a>
-    <a href="events.html" class="hover:underline">Events</a>
-    <a href="register.html" class="btn-primary">Register</a>
+<header class="site-header sticky top-0 z-50 shadow-sm">
+  <div class="top-bar">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+      <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-white/80">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-[var(--primary)]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M8 5v14m8-14v14M3 19h18"></path>
+          </svg>
+          North South University, Dhaka
+        </span>
+        <a href="mailto:debate.club@northsouth.edu" class="flex items-center gap-2 hover:text-[var(--primary)] transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4h16v16H4z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m22 6-10 7L2 6"></path>
+          </svg>
+          debate.club@northsouth.edu
+        </a>
+        <span class="hidden lg:flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5h2l3.6 7.59a1 1 0 0 0 .9.58H17"></path>
+            <circle cx="17" cy="17" r="1"></circle>
+            <circle cx="7" cy="17" r="1"></circle>
+          </svg>
+          Club hours: Sun–Thu, 10AM–7PM
+        </span>
+      </div>
+  <div class="flex items-center gap-3 text-xs text-white/80">
+        <a href="https://facebook.com/nsudc" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1.1.9-2 2-2h2V1h-3c-2.8 0-5 2.2-5 5v3H6v4h3v8z"/></svg>
+        </a>
+        <a href="https://instagram.com/nsudc" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="currentColor"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm9 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/></svg>
+        </a>
+        <a href="register.html" class="font-semibold hover:underline">Apply now</a>
+      </div>
+    </div>
   </div>
-</nav>
+
+  <nav class="main-nav backdrop-blur-md bg-white/95 border-b border-[var(--card-stroke)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="nsu-logo-small.png" alt="NSU" class="h-12 w-auto transition-transform group-hover:scale-105" />
+        <div class="flex flex-col">
+          <span class="site-title font-extrabold text-lg leading-tight">NSU Debate Club</span>
+          <span class="text-xs text-[var(--ink-light)] font-medium">Official NSU Student Organization</span>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="about.html" class="nav-link uppercase tracking-[0.08em]">About</a>
+        <a href="achievements.html" class="nav-link uppercase tracking-[0.08em]">Achievements</a>
+        <a href="events.html" class="nav-link uppercase tracking-[0.08em]">Events</a>
+        <a href="coming-soon.html" class="nav-link uppercase tracking-[0.08em]">Resources</a>
+      </div>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="register.html" class="btn-secondary px-4 py-2 text-sm font-semibold">Student Portal</a>
+        <a href="register.html" class="btn-primary px-5 py-2 text-sm">Join NSUDC</a>
+      </div>
+
+      <button class="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors" id="mobile-menu-btn" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu hidden lg:hidden border-t border-[var(--card-stroke)] bg-white" id="mobile-menu">
+      <div class="px-4 py-4 flex flex-col gap-3">
+        <a href="about.html" class="nav-link py-2">About</a>
+        <a href="achievements.html" class="nav-link py-2">Achievements</a>
+        <a href="events.html" class="nav-link py-2">Events</a>
+        <a href="coming-soon.html" class="nav-link py-2">Resources</a>
+        <a href="register.html" class="btn-secondary px-4 py-2 text-center">Student Portal</a>
+        <a href="register.html" class="btn-primary px-4 py-2 text-center">Join NSUDC</a>
+      </div>
+    </div>
+  </nav>
+</header>

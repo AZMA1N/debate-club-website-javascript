@@ -14,37 +14,46 @@
         }
 
         .step-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 9999px;
-            background: #cdd5e1;
+            background: #e2e8f0;
+            transition: all 0.3s ease;
         }
 
         .step-active .step-dot {
             background: var(--primary);
+            box-shadow: 0 0 0 4px rgba(7, 21, 48, 0.1);
         }
 
         .step-title {
-            color: #475569;
-            font-weight: 700;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
         }
 
         .step-active .step-title {
-            color: #0f172a;
+            color: var(--primary);
+            font-weight: 700;
         }
 
         .field {
-            border: 1px solid rgba(0, 0, 0, .08);
+            border: 1.5px solid rgba(7, 21, 48, 0.08);
+            transition: all 0.2s ease;
+            font-size: 0.9375rem;
         }
 
         .field:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(7, 21, 48, .18);
-            border-color: rgba(7, 21, 48, .35);
+            box-shadow: 0 0 0 3px rgba(7, 21, 48, 0.08);
+            border-color: var(--primary);
+            background: #fafbfc;
         }
 
         .error {
-            border-color: crimson !important;
+            border-color: #ef4444 !important;
+            background: rgba(239, 68, 68, 0.02);
         }
 
         .err-msg {
