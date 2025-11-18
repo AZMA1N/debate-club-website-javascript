@@ -4,8 +4,8 @@
   "description": "Official website for the North South University Debate Club (NSUDC), showcasing club information, events, achievements, and member registration.",
   "type": "module",
   "scripts": {
-    "fetch:social": "node scripts/fetch-social.js",
-    "tokens:exchange": "node scripts/exchange-tokens.js",
+  "fetch:social": "node scripts/fetch-social.js",
+  "exchange:tokens": "node scripts/exchange-tokens.js",
     "test": "echo \"No automated tests for this tooling yet.\""
   },
   "repository": {
