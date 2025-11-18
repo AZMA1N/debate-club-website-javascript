@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "message": "NSUDC Bootcamp registrations close Friday.",
+    "linkText": "View details",
+    "href": "events.html#bootcamp"
+  },
+  {
+    "id": 2,
+    "message": "Inter-varsity trials happening on 24 November.",
+    "linkText": "Read schedule",
+    "href": "events.html#trials"
+  },
+  {
+    "id": 3,
+    "message": "Meet the alumni panel this Saturday at 5 PM.",
+    "linkText": "RSVP",
+    "href": "events.html#alumni"
+  }
+]

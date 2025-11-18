@@ -1,0 +1,22 @@
+{
+  "facebook": {
+    "label": "Facebook",
+    "followers": 12.4,
+    "unit": "k"
+  },
+  "instagram": {
+    "label": "Instagram",
+    "followers": 9.1,
+    "unit": "k"
+  },
+  "twitter": {
+    "label": "Twitter",
+    "followers": 4.2,
+    "unit": "k"
+  },
+  "linkedin": {
+    "label": "LinkedIn",
+    "followers": 6.3,
+    "unit": "k"
+  }
+}
