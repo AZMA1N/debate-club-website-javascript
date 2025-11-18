@@ -110,7 +110,7 @@
   }
 
   async function hydrateAnnouncement() {
-  const slot = document.getElementById('topbar-announcement');
+    const slot = document.getElementById('topbar-announcement');
     if (!slot) return;
 
     const textNode = slot.querySelector('.announcement-text');
@@ -252,15 +252,77 @@
     return index;
   }
 
-  function handleNewMotion() {
-    if (!motions.length) return;
-    const nextIndex = getRandomMotionIndex();
-    if (nextIndex < 0) return;
-    currentMotionIndex = nextIndex;
-    renderMotion(motions[currentMotionIndex]);
-    showToast('New motion queued — prep time starts now!');
-    // Log generated motion to history as not completed
-    addMotionToHistory({ motion: motions[currentMotionIndex].motion, topic: motions[currentMotionIndex].topic, format: motions[currentMotionIndex].format, completed: false });
+
+  async function handleNewMotion() {
+    const topicSelect = document.getElementById('topic-select');
+    const customTopicInput = document.getElementById('custom-topic-input');
+    const formatSelect = document.getElementById('format-select');
+    const loadingEl = document.getElementById('motion-loading');
+
+    let topic = topicSelect?.value || 'Technology & Society';
+    if (topic === 'custom' && customTopicInput) {
+      topic = customTopicInput.value.trim() || 'General';
+    }
+
+    const format = formatSelect?.value || 'British Parliamentary';
+
+    // Show loading state
+    if (loadingEl) {
+      loadingEl.classList.remove('hidden');
+      loadingEl.classList.add('flex');
+    }
+
+    try {
+      // Try to generate motion with Gemini AI
+      if (window.GeminiMotion) {
+        const result = await window.GeminiMotion.generateMotion(topic, format);
+
+        if (result && result.motion) {
+          // Successfully generated with AI
+          renderMotion(result);
+          showToast('AI-generated motion ready — prep time starts now!');
+          addMotionToHistory({
+            motion: result.motion,
+            topic: result.topic,
+            format: result.format,
+            completed: false
+          });
+          return;
+        }
+      }
+    } catch (error) {
+      console.warn('Gemini generation failed, falling back to static motions:', error);
+    } finally {
+      // Hide loading state
+      if (loadingEl) {
+        loadingEl.classList.add('hidden');
+        loadingEl.classList.remove('flex');
+      }
+    }
+
+    // Fallback to static motions
+    if (!motions.length) {
+      showToast('No motions available. Please check your connection.');
+      return;
+    }
+
+    // Try to find a motion matching the topic
+    const staticMotion = window.GeminiMotion
+      ? window.GeminiMotion.getStaticMotion(motions, topic)
+      : motions[Math.floor(Math.random() * motions.length)];
+
+    if (staticMotion) {
+      currentMotionIndex = motions.indexOf(staticMotion);
+      if (currentMotionIndex < 0) currentMotionIndex = 0;
+      renderMotion(staticMotion);
+      showToast('New motion queued — prep time starts now!');
+      addMotionToHistory({
+        motion: staticMotion.motion,
+        topic: staticMotion.topic,
+        format: staticMotion.format,
+        completed: false
+      });
+    }
   }
 
   async function hydrateMotionGenerator() {
@@ -277,6 +339,29 @@
       console.warn('Unable to load motions', err);
     }
 
+    // Check if Gemini service is available
+    if (window.GeminiMotion) {
+      window.GeminiMotion.checkServiceHealth().then(available => {
+        if (available) {
+          console.log('✓ Gemini AI service available');
+        } else {
+          console.warn('⚠ Gemini AI service unavailable, using static motions only');
+        }
+      });
+    }
+
+    // Topic selection handler
+    const topicSelect = document.getElementById('topic-select');
+    const customTopicContainer = document.getElementById('custom-topic-container');
+
+    topicSelect?.addEventListener('change', (e) => {
+      if (e.target.value === 'custom') {
+        customTopicContainer?.classList.remove('hidden');
+      } else {
+        customTopicContainer?.classList.add('hidden');
+      }
+    });
+
     const refreshBtn = document.getElementById('motion-refresh');
     const copyBtn = document.getElementById('motion-copy');
 
@@ -285,14 +370,16 @@
     });
 
     copyBtn?.addEventListener('click', async () => {
-      if (!motions.length || currentMotionIndex < 0) return;
-      const motion = motions[currentMotionIndex];
-      const text = `${motion.motion} (${motion.format || 'BP'} • ${motion.topic || 'General'})`;
+      const motionText = document.getElementById('motion-text');
+      const motionTopic = document.getElementById('motion-topic');
+      const motionFormat = document.getElementById('motion-format');
+
+      if (!motionText) return;
+
+      const text = `${motionText.textContent} (${motionFormat?.textContent || 'BP'} • ${motionTopic?.textContent || 'General'})`;
       try {
         await navigator.clipboard.writeText(text);
         showToast('Motion copied to clipboard. See you in prep!');
-        // mark copy as an interaction in history
-        addMotionToHistory({ motion: motion.motion, topic: motion.topic, format: motion.format, completed: false });
       } catch (err) {
         console.warn('Clipboard unavailable', err);
         showToast('Clipboard unavailable — please copy manually.');
@@ -308,6 +395,7 @@
       showToast('Practice history cleared.');
     });
   }
+
 
   async function hydrateSocialPulse() {
     const postsContainer = document.getElementById('pulse-list');
@@ -329,7 +417,7 @@
         left.style.flex = '1';
         left.innerHTML = `<div style="font-weight:600">${p.title}</div><div class="pulse-meta">${p.platform.toUpperCase()} • ${new Date(p.date).toLocaleDateString()}</div>`;
         const right = document.createElement('div');
-        right.innerHTML = `<div class="pulse-meta">${Object.entries(p.engagement || {}).map(([k,v])=> `${k}: ${v}`).join(' • ')}</div><div style="margin-top:6px"><a href="${p.link}" target="_blank" rel="noopener" class="nav-link">View</a></div>`;
+        right.innerHTML = `<div class="pulse-meta">${Object.entries(p.engagement || {}).map(([k, v]) => `${k}: ${v}`).join(' • ')}</div><div style="margin-top:6px"><a href="${p.link}" target="_blank" rel="noopener" class="nav-link">View</a></div>`;
         item.appendChild(left);
         item.appendChild(right);
         postsContainer && postsContainer.appendChild(item);
@@ -337,7 +425,7 @@
 
       // render alumni
       alumniContainer && (alumniContainer.innerHTML = '');
-      alumni.slice(0,4).forEach(a => {
+      alumni.slice(0, 4).forEach(a => {
         const row = document.createElement('div');
         row.className = 'alumni-item';
         const img = document.createElement('img');

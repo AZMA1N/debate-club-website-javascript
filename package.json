@@ -4,8 +4,10 @@
   "description": "Official website for the North South University Debate Club (NSUDC), showcasing club information, events, achievements, and member registration.",
   "type": "module",
   "scripts": {
-  "fetch:social": "node scripts/fetch-social.js",
-  "exchange:tokens": "node scripts/exchange-tokens.js",
+    "dev": "node server.js",
+    "start": "node server.js",
+    "fetch:social": "node scripts/fetch-social.js",
+    "exchange:tokens": "node scripts/exchange-tokens.js",
     "test": "echo \"No automated tests for this tooling yet.\""
   },
   "repository": {
@@ -20,7 +22,11 @@
   },
   "homepage": "https://github.com/AZMA1N/debate-club-website-javascript#readme",
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
     "node-fetch": "^3.3.2"
   }
 }
