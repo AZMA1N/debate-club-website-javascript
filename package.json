@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "fetch:social": "node scripts/fetch-social.js",
+    "tokens:exchange": "node scripts/exchange-tokens.js",
     "test": "echo \"No automated tests for this tooling yet.\""
   },
   "repository": {
