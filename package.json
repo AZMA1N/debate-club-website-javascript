@@ -1,0 +1,25 @@
+{
+  "name": "debate-club-website-javascript",
+  "version": "1.0.0",
+  "description": "Official website for the North South University Debate Club (NSUDC), showcasing club information, events, achievements, and member registration.",
+  "type": "module",
+  "scripts": {
+    "fetch:social": "node scripts/fetch-social.js",
+    "test": "echo \"No automated tests for this tooling yet.\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AZMA1N/debate-club-website-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AZMA1N/debate-club-website-javascript/issues"
+  },
+  "homepage": "https://github.com/AZMA1N/debate-club-website-javascript#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.2"
+  }
+}

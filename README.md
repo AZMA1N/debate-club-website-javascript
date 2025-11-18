@@ -54,11 +54,13 @@ NSUDC_project/
 - **Vanilla JavaScript** - Dynamic functionality
 - **JSON** - Data storage
 - **Python HTTP Server** - Local development server
+- **Node.js Tooling** - Social content fetch script (optional)
 
 ## 🔧 Development
 
 ### Prerequisites
 - Python 3.x installed on your system
+- Node.js 18+ (only required if you want to run the social pulse fetch script)
 - Modern web browser
 
 ### Running Locally
@@ -69,6 +71,26 @@ NSUDC_project/
    ```
 3. Open [http://localhost:8000](http://localhost:8000)
 
+### Automating the Social Pulse feed
+
+If you want the new **Social Pulse** section on the homepage to pull real posts from Facebook, Instagram, and LinkedIn, you can run the helper script under `scripts/fetch-social.js`.
+
+1. Install dependencies once:
+   ```powershell
+   npm install
+   ```
+2. Copy `.env.example` to `.env` and fill in the required credentials:
+   - `FB_PAGE_ID` and a long-lived `FB_ACCESS_TOKEN` (Graph API, `pages_read_engagement` + `pages_read_user_content` permissions)
+   - `IG_BUSINESS_ID` for the Instagram Business account connected to the Facebook page plus `IG_ACCESS_TOKEN` with `instagram_basic` + `pages_show_list`
+   - `LINKEDIN_ORG_ID` (numeric) and `LINKEDIN_ACCESS_TOKEN` with `r_organization_social` scope
+3. Fetch the latest posts:
+   ```powershell
+   npm run fetch:social
+   ```
+   - Optional: pass a custom output path `npm run fetch:social -- --out=data/social-pulse.json`
+4. The script writes merged posts (sorted by recency) to `data/social-pulse.json` while preserving existing `alumniSpotlights` entries.
+
+> ⚠️ All three APIs require approved apps and tokens; the script simply orchestrates the calls. If a credential is missing the corresponding platform is skipped.
 ### Making Changes
 - **Content**: Edit JSON files in `data/` directory
 - **Styling**: Modify `styles.css` or use Tailwind classes

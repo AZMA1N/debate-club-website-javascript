@@ -1,0 +1,20 @@
+{
+  "fetchedAt": "2025-11-18T15:46:45.386Z",
+  "latestPosts": [],
+  "alumniSpotlights": [
+    {
+      "name": "Aisha Rahman",
+      "role": "Senior Analyst, PolicyLab",
+      "note": "Lead coach for NSUDC 2018-2020, now mentoring our bootcamp cohort.",
+      "photo": "images/alumni/aisha.jpg",
+      "link": "https://www.linkedin.com/in/aisharahman"
+    },
+    {
+      "name": "Imran Hossain",
+      "role": "Corporate Counsel, GlobalCo",
+      "note": "Former team captain and international speaker.",
+      "photo": "images/alumni/imran.jpg",
+      "link": "https://www.linkedin.com/in/imranh"
+    }
+  ]
+}

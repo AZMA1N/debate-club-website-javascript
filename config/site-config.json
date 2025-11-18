@@ -1,0 +1,6 @@
+{
+  "announcementsEndpoint": "data/announcements.json",
+  "socialEndpoint": "data/social.json",
+  "motionsEndpoint": "data/motions.json",
+  "socialPulseEndpoint": "data/social-pulse.json"
+}

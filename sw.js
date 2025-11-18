@@ -21,7 +21,10 @@ const STATIC_FILES = [
   '/nsudc-logo.png',
   '/nsu-logo-small.png',
   '/data/social.json',
+  '/data/social-pulse.json',
   '/data/announcements.json',
+  '/data/motions.json',
+  '/config/site-config.json',
   '/offline.html',
   'https://cdn.tailwindcss.com/3.3.0',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap'

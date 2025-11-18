@@ -148,6 +148,94 @@
         ></section>
 
         <section id="tiles" class="grid gap-5 md:grid-cols-3 animate-slide-in-right"></section>
+
+        <section id="debate-tools" class="grid gap-6 md:grid-cols-2">
+          <div class="card bg-white p-6 md:p-8 space-y-4" id="motion-generator">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="caption text-[var(--ink-light)]">Motion Generator</p>
+                <h2 class="text-2xl font-extrabold">Prep Practice</h2>
+              </div>
+              <span class="badge" id="motion-format">BP</span>
+            </div>
+            <p class="text-sm uppercase tracking-[0.2em] text-[var(--ink-light)]" id="motion-topic">
+              Technology & Society
+            </p>
+            <p class="text-lg font-semibold leading-relaxed" id="motion-text">
+              This House would ban predictive policing algorithms in democratic states.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <button class="btn-primary px-5 py-2 text-sm" id="motion-refresh">
+                New Motion
+              </button>
+              <button class="btn-secondary px-5 py-2 text-sm" id="motion-copy">
+                Copy Motion
+              </button>
+              <div id="motion-history">
+                <div class="flex items-center justify-between">
+                  <div class="caption">Practice history</div>
+                  <button id="clear-history" class="btn-secondary px-3 py-1 text-xs">Clear</button>
+                </div>
+                <div id="history-list" class="mt-2 space-y-2">
+                  <!-- Filled by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card bg-white p-6 md:p-8 space-y-5" id="debate-timer">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <p class="caption text-[var(--ink-light)]">Speech Timer</p>
+                <h2 class="text-2xl font-extrabold">Time Keeper</h2>
+              </div>
+                <div class="flex gap-2 flex-wrap items-center" id="timer-presets">
+                <button class="timer-preset" data-minutes="7" data-name="Main">Main</button>
+                <button class="timer-preset" data-minutes="4" data-name="Reply">Reply</button>
+                <button class="timer-preset" data-minutes="3" data-name="POI">POI</button>
+                  <button id="timer-mute" class="mute-toggle" title="Toggle chimes">🔔</button>
+              </div>
+            </div>
+            <div class="timer-display">
+              <div class="timer-label" id="timer-label">Main Speech</div>
+              <div class="timer-time" id="timer-time">07:00</div>
+              <div class="timer-progress"><span id="timer-progress-bar"></span></div>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <button class="btn-primary px-5 py-2" id="timer-toggle">Start</button>
+              <button class="btn-secondary px-5 py-2" id="timer-reset">Reset</button>
+            </div>
+            <p class="text-xs text-[var(--ink-light)]">
+              Presets follow BP timings. Timer chimes at protected time (1:00) and final minute.
+            </p>
+          </div>
+        </section>
+
+        <section id="social-pulse" class="grid gap-6 md:grid-cols-3">
+          <div class="card p-6 md:col-span-2" id="pulse-posts">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="caption">Social Pulse</p>
+                <h3 class="heading-4">Latest posts & engagement</h3>
+              </div>
+              <a id="pulse-view-all" class="nav-link">View social feed</a>
+            </div>
+
+            <div id="pulse-list" class="mt-4 space-y-3">
+              <!-- Posts hydrated by JS -->
+            </div>
+          </div>
+
+          <div class="card p-6" id="pulse-spotlight">
+            <div>
+              <p class="caption">Alumni Spotlight</p>
+              <h3 class="heading-4">Meet our mentors</h3>
+            </div>
+            <div id="pulse-alumni" class="mt-4 space-y-4">
+              <!-- Alumni hydrated by JS -->
+            </div>
+          </div>
+        </section>
       </main>
 
       <aside class="space-y-6">
